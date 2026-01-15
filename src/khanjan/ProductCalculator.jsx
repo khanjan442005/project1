@@ -24,13 +24,13 @@ class ProductCalculator extends Component {
 
   increaseQty = () => {
     this.setState((prevState) => ({
-      quantity: prevState.quantity + 1,
+      quantity: Math.min(prevState.quantity + 1, 10),
     }));
   };
 
   decreaseQty = () => {
     this.setState((prevState) => ({
-      quantity: prevState.quantity - 1,
+      quantity: Math.max(prevState.quantity - 1, 1),
     }));
   };
 
@@ -64,7 +64,7 @@ class ProductCalculator extends Component {
 
           <button
             onClick={this.increaseQty}
-            disabled={quantity > 10}
+            disabled={quantity >= 10}
           >
             +
           </button>
